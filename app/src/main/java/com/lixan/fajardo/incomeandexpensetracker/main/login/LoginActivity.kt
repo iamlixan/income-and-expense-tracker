@@ -40,6 +40,12 @@ class LoginActivity : BaseViewModelActivity<ActivityLoginBinding, LoginViewModel
             .subscribe {
                 clearErrors()
             }.addTo(disposables)
+
+        binding
+            .tvForgotPassword
+            .ninjaTap {
+                Toast.makeText(this, "Coming Soon!", Toast.LENGTH_SHORT).show()
+            }
     }
 
     private fun setupViewModel() {
