@@ -6,6 +6,10 @@ sealed class LoginState {
 
     data class LoginSuccess(val userData: UserDataToken) : LoginState()
 
+    object UserIsLoggedIn: LoginState()
+
+    object UserIsNotLoggedIn: LoginState()
+
     object EmailIsEmpty : LoginState()
 
     object EmailIsInvalid : LoginState()
