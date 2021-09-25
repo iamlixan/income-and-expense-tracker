@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Income And Expense Tracker</string>
+    <string name="search">Search</string>
+    <string name="applogo">AppLogo</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="login">Login</string>
+
+    <string name="generic_error">Oops! Something went wrong.</string>
+    <string name="error_email_is_empty">Email must not be empty</string>
+    <string name="error_invalid_format">Email is on invalid format</string>
+    <string name="error_password_empty">Password must not be empty</string>
+
+    <string name="error_invalid_credentials">Invalid credentials</string>
+    <string name="error_email_password_incorrect">Email or password is incorrect</string>
+</resources>

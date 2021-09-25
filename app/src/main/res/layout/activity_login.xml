@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/img_background"
+        android:fitsSystemWindows="true">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/leftVerticalGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".04"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/rightVerticalGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".96"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/logoTopHorizontalGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".249" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/logoLeftVerticalGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".307" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/logoRightVerticalGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".696" />
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_logo"
+            android:contentDescription="@string/applogo"
+            app:layout_constraintStart_toEndOf="@id/logoLeftVerticalGuideline"
+            app:layout_constraintTop_toBottomOf="@id/logoTopHorizontalGuideline"
+            app:layout_constraintEnd_toStartOf="@id/logoRightVerticalGuideline"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etEmailContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false"
+            app:boxStrokeColor="@android:color/transparent"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeWidthFocused="@dimen/_0dp"
+            app:boxStrokeWidth="@dimen/_0dp"
+            app:errorTextAppearance="@style/TextInputErrorAppearance"
+            app:errorIconDrawable="@drawable/ic_icn_warning"
+            android:layout_marginTop="@dimen/_56dp"
+            app:layout_constraintStart_toEndOf="@id/leftVerticalGuideline"
+            app:layout_constraintTop_toBottomOf="@id/ivLogo"
+            app:layout_constraintEnd_toStartOf="@id/rightVerticalGuideline">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_round_background_4"
+                android:textAppearance="@style/TextInputTextAppearance"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:paddingStart="@dimen/_10dp"
+                android:paddingEnd="@dimen/_0dp"
+                android:paddingTop="@dimen/_13dp"
+                android:paddingBottom="@dimen/_17dp"
+                >
+                <requestFocus/>
+            </com.google.android.material.textfield.TextInputEditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etPasswordLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false"
+            app:endIconMode="password_toggle"
+            app:endIconDrawable="@drawable/ic_password_toggle"
+            app:boxStrokeColor="@android:color/transparent"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeWidthFocused="@dimen/_0dp"
+            app:boxStrokeWidth="@dimen/_0dp"
+            app:errorTextAppearance="@style/TextInputErrorAppearance"
+            app:errorIconDrawable="@drawable/ic_icn_warning"
+            android:layout_marginTop="@dimen/_20dp"
+            app:layout_constraintStart_toEndOf="@id/leftVerticalGuideline"
+            app:layout_constraintTop_toBottomOf="@id/etEmailContainer"
+            app:layout_constraintEnd_toStartOf="@id/rightVerticalGuideline" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/edit_text_round_background_4"
+                android:textAppearance="@style/TextInputTextAppearance"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:paddingStart="@dimen/_10dp"
+                android:paddingEnd="@dimen/_0dp"
+                android:paddingTop="@dimen/_13dp"
+                android:paddingBottom="@dimen/_17dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvForgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/forgot_password"
+            android:textAppearance="@style/TextInputTextAppearance"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/_13dp"
+            app:layout_constraintTop_toBottomOf="@id/etPasswordLayout"
+            app:layout_constraintEnd_toStartOf="@id/rightVerticalGuideline" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_33dp"
+            android:background="@drawable/view_round_background_23"
+            android:text="@string/login"
+            android:fontFamily="@font/sf_pro_medium"
+            android:textSize="@dimen/_15sp"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            app:layout_constraintStart_toEndOf="@id/leftVerticalGuideline"
+            app:layout_constraintTop_toBottomOf="@id/tvForgotPassword"
+            app:layout_constraintEnd_toStartOf="@id/rightVerticalGuideline"/>
+
+        <TextView
+            android:id="@+id/tvError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_icn_warning"
+            android:drawablePadding="@dimen/_10dp"
+            android:fontFamily="@font/sf_pro_regular"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13sp"
+            android:layout_marginTop="@dimen/_40dp"
+            android:visibility="gone"
+            android:includeFontPadding="false"
+            android:gravity="center_vertical"
+            app:layout_constraintStart_toEndOf="@id/leftVerticalGuideline"
+            app:layout_constraintTop_toBottomOf="@id/btnLogin"
+            app:layout_constraintEnd_toStartOf="@id/rightVerticalGuideline"
+            tools:text="@string/error_email_password_incorrect"/>
+
+        <include
+            android:id="@+id/progressView"
+            layout="@layout/view_progress_bar"
+            android:visibility="gone"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

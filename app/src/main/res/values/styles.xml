@@ -1,0 +1,27 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="TextInputTextAppearance">
+        <item name="fontFamily">@font/sf_pro_regular</item>
+        <item name="android:textColor">@color/blue_grey_400</item>
+        <item name="android:textSize">@dimen/_13sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="lineSpacing">@dimen/_15dp</item>
+    </style>
+
+    <style name="TextInputErrorAppearance">
+        <item name="fontFamily">@font/sf_pro_medium</item>
+        <item name="android:textColor">@android:color/holo_red_light</item>
+        <item name="android:textSize">@dimen/_13sp</item>
+        <item name="android:letterSpacing">0.0</item>
+        <item name="lineSpacing">@dimen/_15dp</item>
+        <item name="android:paddingTop">@dimen/_8dp</item>
+    </style>
+    
+</resources>

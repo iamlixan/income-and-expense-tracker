@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="white">#FFFFFF</color>
+
+    <color name="blue_grey_400">#828686</color>
+    <color name="blue_grey_800">#364E4C</color>
+
+    <color name="teal_300">#5ABCB3</color>
+    <color name="grey_800">#454545</color>
+
+    <color name="transparent_background">#4FFFFFFF</color>
+</resources>
