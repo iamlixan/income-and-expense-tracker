@@ -17,7 +17,28 @@ class LoginViewModel @Inject constructor(
     private val resourceManager: ResourceManager
 ) : BaseViewModel() {
 
-    override fun isFirstTimeUICreated(bundle: Bundle?) = Unit
+    override fun isFirstTimeUICreated(bundle: Bundle?) {
+        loginRepository.getUserDetails()
+            .observeOn(schedulers.ui())
+            .subscribeOn(schedulers.io())
+            .subscribeBy(
+                onSuccess = {
+                    if (it.token.isNotBlank()) {
+                        _state.onNext(
+                            LoginState.UserIsLoggedIn
+                        )
+                    } else {
+                        _state.onNext(
+                            LoginState.UserIsNotLoggedIn
+                        )
+                    }
+                }, onError = {
+                    _state.onNext(
+                        LoginState.UserIsNotLoggedIn
+                    )
+                }
+            ).addTo(disposables)
+    }
 
     private val _state by lazy {
         PublishSubject.create<LoginState>()

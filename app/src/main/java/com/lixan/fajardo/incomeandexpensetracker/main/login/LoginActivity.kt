@@ -67,6 +67,12 @@ class LoginActivity : BaseViewModelActivity<ActivityLoginBinding, LoginViewModel
             is LoginState.LoginSuccess -> {
                 Toast.makeText(this, "Welcome, ${state.userData.user.firstName} !", Toast.LENGTH_LONG).show()
             }
+            is LoginState.UserIsLoggedIn -> {
+                Toast.makeText(this, "User Is Already Logged In. Launch Home Activity", Toast.LENGTH_LONG).show()
+            }
+            is LoginState.UserIsNotLoggedIn -> {
+                binding.parentLayout.isVisible = true
+            }
             is LoginState.EmailIsEmpty -> {
                 setEmailError(getString(R.string.error_email_is_empty))
             }
