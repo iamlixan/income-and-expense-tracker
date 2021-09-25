@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:enabled="true"
+        android:title="@string/home"
+        android:icon="@drawable/ic_icn_home"
+        />
+
+    <item
+        android:id="@+id/sync"
+        android:enabled="true"
+        android:title="@string/sync"
+        android:icon="@drawable/ic_icn_sync"
+        />
+
+    <item
+        android:id="@+id/add"
+        android:enabled="true"
+        android:title=""
+        android:icon="@drawable/ic_icn_plus"
+        />
+
+    <item
+        android:id="@+id/history"
+        android:enabled="true"
+        android:title="@string/history"
+        android:icon="@drawable/ic_icn_history"
+        />
+
+    <item
+        android:id="@+id/settings"
+        android:enabled="true"
+        android:title="@string/settings"
+        android:icon="@drawable/ic_icn_settings"
+        />
+
+</menu>
