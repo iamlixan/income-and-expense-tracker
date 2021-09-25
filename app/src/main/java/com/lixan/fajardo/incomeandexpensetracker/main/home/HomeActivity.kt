@@ -1,5 +1,6 @@
 package com.lixan.fajardo.incomeandexpensetracker.main.home
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -34,6 +35,7 @@ class HomeActivity : BaseViewModelActivity<ActivityHomeBinding, HomeViewModel>()
                     HomeActivity::class.java
                 )
             )
+            (context as Activity).finish()
         }
     }
 }

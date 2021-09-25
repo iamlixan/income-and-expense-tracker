@@ -14,9 +14,11 @@
     <dimen name="_20dp">20dp</dimen>
     <dimen name="_22dp">22dp</dimen>
     <dimen name="_23dp">23dp</dimen>
+    <dimen name="_30dp">30dp</dimen>
     <dimen name="_33dp">33dp</dimen>
     <dimen name="_40dp">40dp</dimen>
     <dimen name="_56dp">56dp</dimen>
+    <dimen name="_60dp">60dp</dimen>
 
 <!--  SP  -->
     <dimen name="_9sp">9sp</dimen>

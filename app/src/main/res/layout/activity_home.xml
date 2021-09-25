@@ -9,6 +9,27 @@
         android:fitsSystemWindows="true"
         >
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/fabLeftVerticalGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".42" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/fabRightVerticalGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".58" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/bottomHorizontalGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.963" />
+
         <ImageView
             android:id="@+id/headerBackground"
             android:layout_width="match_parent"
@@ -30,9 +51,22 @@
             app:itemTextAppearanceInactive="@style/BottomNavigationTextAppearanceInActive"
             app:itemTextAppearanceActive="@style/BottomNavigationTextAppearanceActive"
             app:elevation="@dimen/_0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@id/bottomHorizontalGuideline"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAdd"
+            android:layout_width="@dimen/_60dp"
+            android:layout_height="@dimen/_60dp"
+            app:fabCustomSize="@dimen/_60dp"
+            app:backgroundTint="@color/teal_300"
+            android:tint="@color/white"
+            android:src="@drawable/ic_icn_plus"
+            android:scaleType="centerInside"
+            app:layout_constraintStart_toEndOf="@id/fabLeftVerticalGuideline"
+            app:layout_constraintTop_toTopOf="@id/bottomNav"
+            app:layout_constraintEnd_toStartOf="@id/fabRightVerticalGuideline" />
 
         <include
             android:id="@+id/progressView"

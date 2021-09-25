@@ -17,7 +17,7 @@
 
     <item
         android:id="@+id/add"
-        android:enabled="true"
+        android:enabled="false"
         android:title=""
         android:icon="@drawable/ic_icn_plus"
         />

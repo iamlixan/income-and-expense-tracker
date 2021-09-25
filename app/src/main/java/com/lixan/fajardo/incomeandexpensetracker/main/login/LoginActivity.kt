@@ -69,7 +69,7 @@ class LoginActivity : BaseViewModelActivity<ActivityLoginBinding, LoginViewModel
                 HomeActivity.openActivity(this)
             }
             is LoginState.UserIsLoggedIn -> {
-                Toast.makeText(this, "User Is Already Logged In. Launch Home Activity", Toast.LENGTH_LONG).show()
+                HomeActivity.openActivity(this)
             }
             is LoginState.UserIsNotLoggedIn -> {
                 binding.parentLayout.isVisible = true
