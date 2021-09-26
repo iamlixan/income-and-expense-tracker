@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent=".357"/>
+            app:layout_constraintGuide_percent=".357" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/fabOptionRightVerticalGuideline"
@@ -104,9 +104,7 @@
             android:src="@drawable/ic_icn_income"
             android:scaleType="centerInside"
             android:layout_marginBottom="5dp"
-            android:layout_marginStart="@dimen/_12dp"
             android:visibility="gone"
-            app:layout_constraintStart_toEndOf="@id/fabExpense"
             app:layout_constraintEnd_toStartOf="@id/fabOptionRightVerticalGuideline"
             app:layout_constraintBottom_toTopOf="@id/fabAdd" />
 
