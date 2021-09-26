@@ -23,4 +23,9 @@
     <string name="food">Food</string>
     <string name="transportation">Transportation</string>
     <string name="others">Others</string>
+    <string name="date">Date</string>
+    <string name="amount">Amount</string>
+    <string name="_0">$0</string>
+    <string name="notes">Notes</string>
+    <string name="add_notes">Add Notes</string>
 </resources>

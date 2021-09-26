@@ -27,6 +27,7 @@
     <dimen name="_48dp">48dp</dimen>
     <dimen name="_56dp">56dp</dimen>
     <dimen name="_60dp">60dp</dimen>
+    <dimen name="_90dp">90dp</dimen>
     <dimen name="_101dp">101dp</dimen>
 
 <!--  SP  -->

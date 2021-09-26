@@ -5,3 +5,5 @@ const val BASE_URL = "https://us-central1-blackfin-mobiletrial-main.cloudfunctio
 const val KEY_GIT_USER_DATA = "KEY_GIT_USER_DATA"
 
 const val NINJA_TAP_THROTTLE_TIME = 500L
+
+const val DATE_FORMAT = "MM/dd/yyyy"
