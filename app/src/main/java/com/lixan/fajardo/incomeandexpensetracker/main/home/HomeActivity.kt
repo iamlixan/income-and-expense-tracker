@@ -11,6 +11,7 @@ import com.lixan.fajardo.incomeandexpensetracker.R
 import com.lixan.fajardo.incomeandexpensetracker.databinding.ActivityHomeBinding
 import com.lixan.fajardo.incomeandexpensetracker.di.base.BaseViewModelActivity
 import com.lixan.fajardo.incomeandexpensetracker.ext.ninjaTap
+import com.lixan.fajardo.incomeandexpensetracker.main.addexpense.AddExpenseActivity
 
 class HomeActivity : BaseViewModelActivity<ActivityHomeBinding, HomeViewModel>() {
 
@@ -43,6 +44,11 @@ class HomeActivity : BaseViewModelActivity<ActivityHomeBinding, HomeViewModel>()
         binding.fabAdd.ninjaTap {
             isFabOptionsShown = !isFabOptionsShown
             openFabOptions(!isFabOptionsShown)
+        }
+
+        binding.fabExpense.ninjaTap {
+            AddExpenseActivity.openActivity(this)
+            binding.fabAdd.performClick()
         }
 
     }
