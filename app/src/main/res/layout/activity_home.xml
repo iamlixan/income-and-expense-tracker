@@ -24,6 +24,20 @@
             app:layout_constraintGuide_percent=".58" />
 
         <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/fabOptionLeftVerticalGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".357"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/fabOptionRightVerticalGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".645"/>
+
+        <androidx.constraintlayout.widget.Guideline
             android:id="@+id/bottomHorizontalGuideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -67,6 +81,42 @@
             app:layout_constraintStart_toEndOf="@id/fabLeftVerticalGuideline"
             app:layout_constraintTop_toTopOf="@id/bottomNav"
             app:layout_constraintEnd_toStartOf="@id/fabRightVerticalGuideline" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabExpense"
+            android:layout_width="@dimen/_48dp"
+            android:layout_height="@dimen/_48dp"
+            app:fabCustomSize="@dimen/_48dp"
+            app:backgroundTint="@color/white"
+            android:src="@drawable/ic_icn_expense"
+            android:scaleType="centerInside"
+            android:layout_marginBottom="5dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@id/fabOptionLeftVerticalGuideline"
+            app:layout_constraintBottom_toTopOf="@id/fabAdd" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabIncome"
+            android:layout_width="@dimen/_48dp"
+            android:layout_height="@dimen/_48dp"
+            app:fabCustomSize="@dimen/_48dp"
+            app:backgroundTint="@color/white"
+            android:src="@drawable/ic_icn_income"
+            android:scaleType="centerInside"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="@dimen/_12dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@id/fabExpense"
+            app:layout_constraintEnd_toStartOf="@id/fabOptionRightVerticalGuideline"
+            app:layout_constraintBottom_toTopOf="@id/fabAdd" />
+
+        <View
+            android:id="@+id/fabOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:visibility="gone"
+            android:alpha=".5" />
 
         <include
             android:id="@+id/progressView"
