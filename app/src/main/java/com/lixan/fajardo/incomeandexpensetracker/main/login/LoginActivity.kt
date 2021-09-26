@@ -10,6 +10,7 @@ import com.lixan.fajardo.incomeandexpensetracker.databinding.ActivityLoginBindin
 import com.lixan.fajardo.incomeandexpensetracker.di.base.BaseViewModelActivity
 import com.lixan.fajardo.incomeandexpensetracker.ext.hideKeyboardClearFocus
 import com.lixan.fajardo.incomeandexpensetracker.ext.ninjaTap
+import com.lixan.fajardo.incomeandexpensetracker.main.home.HomeActivity
 import com.lixan.fajardo.incomeandexpensetracker.utils.NINJA_TAP_THROTTLE_TIME
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
@@ -65,10 +66,10 @@ class LoginActivity : BaseViewModelActivity<ActivityLoginBinding, LoginViewModel
     private fun handleStates(state: LoginState) {
         when(state) {
             is LoginState.LoginSuccess -> {
-                Toast.makeText(this, "Welcome, ${state.userData.user.firstName} !", Toast.LENGTH_LONG).show()
+                HomeActivity.openActivity(this)
             }
             is LoginState.UserIsLoggedIn -> {
-                Toast.makeText(this, "User Is Already Logged In. Launch Home Activity", Toast.LENGTH_LONG).show()
+                HomeActivity.openActivity(this)
             }
             is LoginState.UserIsNotLoggedIn -> {
                 binding.parentLayout.isVisible = true
