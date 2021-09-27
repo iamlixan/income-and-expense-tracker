@@ -32,4 +32,7 @@
     <string name="add_notes">Add Notes</string>
     <string name="expense_added_successfully">Expense added successfully</string>
     <string name="please_select_expense_type">* Please select expense type</string>
+    <string name="add_income">Add Income</string>
+    <string name="work">Work</string>
+    <string name="income_source">Income Source</string>
 </resources>

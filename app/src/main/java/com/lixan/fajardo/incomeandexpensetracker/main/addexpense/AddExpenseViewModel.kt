@@ -1,6 +1,7 @@
 package com.lixan.fajardo.incomeandexpensetracker.main.addexpense
 
 import android.os.Bundle
+import com.lixan.fajardo.incomeandexpensetracker.R
 import com.lixan.fajardo.incomeandexpensetracker.data.repository.source.TransactionRepository
 import com.lixan.fajardo.incomeandexpensetracker.di.base.BaseViewModel
 import com.lixan.fajardo.incomeandexpensetracker.main.login.LoginState
@@ -66,7 +67,7 @@ class AddExpenseViewModel @Inject constructor(
                         AddExpenseState.HideLoading
                     )
                     _state.onNext(
-                        AddExpenseState.Error(it.message.orEmpty())
+                        AddExpenseState.Error(resourceManager.getString(R.string.generic_error))
                     )
                 }
             )
