@@ -10,5 +10,7 @@ interface LoginLocalRepository {
 
     fun getUserDetails(): Single<UserDataToken>
 
+    fun getBearerToken(): Single<String>
+
     fun logoutUser(): Completable
 }

@@ -6,13 +6,23 @@
 
     <color name="white">#FFFFFF</color>
 
+    <color name="black">#000000</color>
     <color name="black_alpha_0">#00000000</color>
 
     <color name="blue_grey_400">#828686</color>
+    <color name="blue_grey_600">#717272</color>
     <color name="blue_grey_800">#364E4C</color>
 
-    <color name="teal_300">#5ABCB3</color>
+    <color name="green_300">#80C187</color>
+
+    <color name="grey_300">#D9D9D9</color>
+    <color name="grey_600">#7E7E7E</color>
     <color name="grey_800">#454545</color>
+
+    <color name="orange_200">#FFB86D</color>
+
+    <color name="teal_300">#5ABCB3</color>
+    <color name="teal_400">#2D978E</color>
 
     <color name="transparent_background">#4FFFFFFF</color>
 </resources>
