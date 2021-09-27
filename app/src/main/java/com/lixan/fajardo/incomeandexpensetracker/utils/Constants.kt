@@ -18,4 +18,8 @@ const val TRANSACTION_SUB_TYPE_FOOD = "Food"
 
 const val TRANSACTION_SUB_TYPE_TRANSPORTATION = "Transportation"
 
+const val TRANSACTION_SUB_TYPE_WORK = "Work"
+
+const val TRANSACTION_SUB_TYPE_BUSINESS = "Business"
+
 const val TRANSACTION_SUB_TYPE_OTHERS = "Others"

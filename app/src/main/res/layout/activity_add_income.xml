@@ -13,7 +13,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-             >
+            >
 
             <ImageButton
                 android:id="@+id/btnBack"
@@ -34,7 +34,7 @@
                 android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/add_expense"
+                android:text="@string/add_income"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_17sp"
                 android:fontFamily="@font/sf_pro_bold"
@@ -81,12 +81,13 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         app:layout_constraintGuide_percent=".895"/>
+
                     <TextView
-                        android:id="@+id/tvExpenseType"
+                        android:id="@+id/tvIncomeSource"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/sf_pro_semibold"
-                        android:text="@string/expense_type"
+                        android:text="@string/income_source"
                         android:textColor="@color/blue_grey_600"
                         android:textSize="@dimen/_13sp"
                         android:lineSpacingExtra="@dimen/_15dp"
@@ -97,30 +98,30 @@
                     <RadioGroup
                         android:id="@+id/rgIncomeType"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/_60dp"
                         android:orientation="horizontal"
                         android:layout_marginTop="@dimen/_14dp"
                         android:weightSum="3"
                         app:layout_constraintStart_toEndOf="@id/leftVerticalGuideline"
-                        app:layout_constraintTop_toBottomOf="@id/tvExpenseType"
+                        app:layout_constraintTop_toBottomOf="@id/tvIncomeSource"
                         app:layout_constraintEnd_toStartOf="@id/rightVerticalGuideline" >
 
                         <RadioButton
-                            android:id="@+id/rbFood"
+                            android:id="@+id/rbWork"
                             android:layout_width="@dimen/_101dp"
                             android:layout_height="@dimen/_60dp"
                             android:gravity="center"
-                            android:background="@drawable/rd_food_shape_bg"
+                            android:background="@drawable/rd_work_shape_bg"
                             android:button="@android:color/transparent"
-                            android:drawableTop="@drawable/ic_food_selector"
+                            android:drawableTop="@drawable/ic_work_selector"
                             android:drawablePadding="5dp"
-                            android:text="@string/food"
+                            android:text="@string/work"
                             android:textSize="@dimen/_11sp"
-                            android:textColor="@color/rd_food_text_color_selector"
+                            android:textColor="@color/rd_work_text_color_selector"
                             android:fontFamily="@font/sf_pro_regular"
                             android:lineSpacingExtra="@dimen/_13dp"
                             android:paddingStart="@dimen/_37dp"
-                            android:paddingTop="@dimen/_10dp"
+                            android:paddingTop="@dimen/_14dp"
                             android:paddingEnd="@dimen/_37dp"
                             android:paddingBottom="@dimen/_10dp"
                             android:layout_weight="1"
@@ -130,23 +131,24 @@
                             />
 
                         <RadioButton
-                            android:id="@+id/rbTransportation"
+                            android:id="@+id/rbBusiness"
                             android:layout_width="@dimen/_101dp"
                             android:layout_height="@dimen/_60dp"
                             android:gravity="center"
-                            android:background="@drawable/rd_transpo_shape_bg"
+                            android:background="@drawable/rd_business_shape_bg"
                             android:button="@android:color/transparent"
-                            android:drawableTop="@drawable/ic_transpo_selector"
-                            android:drawablePadding="5dp"
-                            android:text="@string/transportation"
+                            android:drawableTop="@drawable/ic_business_selector"
+                            android:drawablePadding="6dp"
+                            android:text="Business"
                             android:textSize="@dimen/_11sp"
-                            android:textColor="@color/rd_transpo_text_color_selector"
+                            android:textColor="@color/rd_business_text_color_selector"
                             android:fontFamily="@font/sf_pro_regular"
                             android:lineSpacingExtra="@dimen/_13dp"
-                            android:paddingStart="@dimen/_12dp"
-                            android:paddingTop="@dimen/_10dp"
-                            android:paddingEnd="@dimen/_12dp"
+                            android:paddingStart="27dp"
+                            android:paddingTop="@dimen/_13dp"
+                            android:paddingEnd="27dp"
                             android:paddingBottom="@dimen/_10dp"
+                            android:singleLine="true"
                             android:layout_weight="1"
                             android:layout_marginEnd="@dimen/_19dp"
                             />
@@ -165,9 +167,9 @@
                             android:textColor="@color/rd_others_text_color_selector"
                             android:fontFamily="@font/sf_pro_regular"
                             android:lineSpacingExtra="@dimen/_13dp"
-                            android:paddingStart="@dimen/_12dp"
-                            android:paddingTop="@dimen/_10dp"
-                            android:paddingEnd="@dimen/_12dp"
+                            android:paddingStart="@dimen/_33dp"
+                            android:paddingTop="@dimen/_12dp"
+                            android:paddingEnd="@dimen/_33dp"
                             android:paddingBottom="@dimen/_10dp"
                             android:layout_weight="1"
                             />
@@ -329,13 +331,13 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <Button
-                        android:id="@+id/btnAddExpense"
+                        android:id="@+id/btnAddIncome"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_33dp"
                         android:background="@drawable/view_round_background_23"
                         android:fontFamily="@font/sf_pro_medium"
-                        android:text="@string/add_expense"
+                        android:text="@string/add_income"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_15sp"

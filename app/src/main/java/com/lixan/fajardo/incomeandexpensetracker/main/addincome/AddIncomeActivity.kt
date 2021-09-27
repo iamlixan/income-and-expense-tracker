@@ -1,31 +1,25 @@
-package com.lixan.fajardo.incomeandexpensetracker.main.addexpense
+package com.lixan.fajardo.incomeandexpensetracker.main.addincome
 
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
-import androidx.core.view.isVisible
 import com.jakewharton.rxbinding3.widget.textChanges
 import com.lixan.fajardo.incomeandexpensetracker.R
-import com.lixan.fajardo.incomeandexpensetracker.databinding.ActivityAddExpenseBinding
+import com.lixan.fajardo.incomeandexpensetracker.databinding.ActivityAddIncomeBinding
 import com.lixan.fajardo.incomeandexpensetracker.di.base.BaseViewModelActivity
 import com.lixan.fajardo.incomeandexpensetracker.ext.*
-import com.lixan.fajardo.incomeandexpensetracker.utils.DATE_FORMAT
-import com.lixan.fajardo.incomeandexpensetracker.utils.TRANSACTION_SUB_TYPE_FOOD
-import com.lixan.fajardo.incomeandexpensetracker.utils.TRANSACTION_SUB_TYPE_OTHERS
-import com.lixan.fajardo.incomeandexpensetracker.utils.TRANSACTION_SUB_TYPE_TRANSPORTATION
+import com.lixan.fajardo.incomeandexpensetracker.utils.*
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 import timber.log.Timber
-import java.text.SimpleDateFormat
 import java.util.*
 
-class AddExpenseActivity : BaseViewModelActivity<ActivityAddExpenseBinding, AddExpenseViewModel>() {
+class AddIncomeActivity : BaseViewModelActivity<ActivityAddIncomeBinding, AddIncomeViewModel>() {
 
-    override fun getLayoutId(): Int = R.layout.activity_add_expense
+    override fun getLayoutId(): Int = R.layout.activity_add_income
 
     private lateinit var calendar : Calendar
     private lateinit var dateSetListener: DatePickerDialog.OnDateSetListener
@@ -52,29 +46,36 @@ class AddExpenseActivity : BaseViewModelActivity<ActivityAddExpenseBinding, AddE
             ).addTo(disposables)
     }
 
-    private fun handleState(state: AddExpenseState) {
+    private fun handleState(state: AddIncomeState) {
         when(state) {
-            is AddExpenseState.Success -> {
+            is AddIncomeState.Success -> {
                 Toast.makeText(
                     this,
-                    getString(R.string.expense_added_successfully),
+                    getString(R.string.income_added_successfully),
                     Toast.LENGTH_SHORT
                 ).show()
                 clearFields()
             }
-            is AddExpenseState.ShowLoading -> {
+            is AddIncomeState.ShowLoading -> {
                 binding.progressView.visibility = View.VISIBLE
             }
-            is AddExpenseState.HideLoading -> {
+            is AddIncomeState.HideLoading -> {
                 binding.progressView.visibility = View.GONE
             }
-            is AddExpenseState.InvalidAmount -> {
+            is AddIncomeState.InvalidAmount -> {
                 binding.tvAmountError.visibility = View.VISIBLE
             }
-            is AddExpenseState.SubtypeIsEmpty -> {
+            is AddIncomeState.SubtypeIsEmpty -> {
                 binding.tvExpenseTypeError.visibility = View.VISIBLE
             }
-            is AddExpenseState.Error -> {
+            is AddIncomeState.OnAmountTextChange -> {
+                binding.etAmount.setText(state.text)
+                binding.etAmount.setSelection(state.text.length)
+            }
+            is AddIncomeState.OnAmountTextClear -> {
+                binding.etAmount.text?.clear()
+            }
+            is AddIncomeState.Error -> {
                 Toast.makeText(this, state.errorMessage, Toast.LENGTH_LONG).show()
             }
         }
@@ -87,14 +88,20 @@ class AddExpenseActivity : BaseViewModelActivity<ActivityAddExpenseBinding, AddE
 
         binding.cvParent.setBackgroundResource(R.drawable.cv_top_rounded_corners_white)
 
-        binding.btnAddExpense.ninjaTap {
+        binding.btnAddIncome.ninjaTap {
             clearErrors()
-            viewModel.addExpense(
+            viewModel.addIncome(
                 subType,
                 binding.etAmount.text?.toString().orEmpty().convertAmountToDouble(),
                 binding.etNotes.text.toString(),
                 calendar.time.convertDateStringForAPI()
             )
+//            viewModel.addExpense(
+//                subType,
+//                binding.etAmount.text?.toString().orEmpty().convertAmountToDouble(),
+//                binding.etNotes.text.toString(),
+//                calendar.time.convertDateStringForAPI()
+//            )
         }
 
         setupRadioButtons()
@@ -103,22 +110,22 @@ class AddExpenseActivity : BaseViewModelActivity<ActivityAddExpenseBinding, AddE
     }
 
     private fun setupRadioButtons() {
-        binding.rbFood.setOnCheckedChangeListener { compoundButton, isChecked ->
+        binding.rbWork.setOnCheckedChangeListener { compoundButton, isChecked ->
             if (isChecked) {
-                subType = TRANSACTION_SUB_TYPE_FOOD
+                subType = TRANSACTION_SUB_TYPE_WORK
 
                 compoundButton.alpha = 1F
-                binding.rbTransportation.alpha = .5F
+                binding.rbBusiness.alpha = .5F
                 binding.rbOthers.alpha = .5F
             }
         }
 
-        binding.rbTransportation.setOnCheckedChangeListener { compoundButton, isChecked ->
+        binding.rbBusiness.setOnCheckedChangeListener { compoundButton, isChecked ->
             if (isChecked) {
-                subType = TRANSACTION_SUB_TYPE_TRANSPORTATION
+                subType = TRANSACTION_SUB_TYPE_BUSINESS
 
                 compoundButton.alpha = 1F
-                binding.rbFood.alpha = .5F
+                binding.rbWork.alpha = .5F
                 binding.rbOthers.alpha = .5F
             }
         }
@@ -128,8 +135,8 @@ class AddExpenseActivity : BaseViewModelActivity<ActivityAddExpenseBinding, AddE
                 subType = TRANSACTION_SUB_TYPE_OTHERS
 
                 compoundButton.alpha = 1F
-                binding.rbTransportation.alpha = .5F
-                binding.rbFood.alpha = .5F
+                binding.rbBusiness.alpha = .5F
+                binding.rbWork.alpha = .5F
             }
         }
     }
@@ -165,17 +172,8 @@ class AddExpenseActivity : BaseViewModelActivity<ActivityAddExpenseBinding, AddE
             .observeOn(schedulers.ui())
             .subscribeBy(
                 onNext = {
-//                  TODO: Move Logic to ViewModel
                     binding.etAmount.setSelection(it.length)
-                    if (it.isNullOrEmpty()) return@subscribeBy
-                    if (it.toString() == "$") {
-                        binding.etAmount.text?.clear()
-                        return@subscribeBy
-                    }
-                    if (it.startsWith("$", false)) return@subscribeBy
-                    val amountText = "$$it"
-                    binding.etAmount.setText(amountText)
-                    binding.etAmount.setSelection(it.length)
+                    viewModel.onAmountTextChanges(it.toString())
                 }
             ).addTo(disposables)
     }
@@ -186,8 +184,8 @@ class AddExpenseActivity : BaseViewModelActivity<ActivityAddExpenseBinding, AddE
         binding.etAmount.text?.clear()
         binding.etNotes.text?.clear()
 
-        binding.rbFood.alpha = 1F
-        binding.rbTransportation.alpha = 1F
+        binding.rbWork.alpha = 1F
+        binding.rbBusiness.alpha = 1F
         binding.rbOthers.alpha = 1F
 
         subType = ""
@@ -203,7 +201,8 @@ class AddExpenseActivity : BaseViewModelActivity<ActivityAddExpenseBinding, AddE
         fun openActivity(context: Context) {
             context.startActivity(
                 Intent(
-                    context, AddExpenseActivity::class.java
+                    context,
+                    AddIncomeActivity::class.java
                 )
             )
         }
