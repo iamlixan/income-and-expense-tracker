@@ -7,12 +7,17 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import com.lixan.fajardo.incomeandexpensetracker.R
 import com.lixan.fajardo.incomeandexpensetracker.databinding.ActivityHomeBinding
 import com.lixan.fajardo.incomeandexpensetracker.di.base.BaseViewModelActivity
 import com.lixan.fajardo.incomeandexpensetracker.ext.ninjaTap
 import com.lixan.fajardo.incomeandexpensetracker.main.addexpense.AddExpenseActivity
 import com.lixan.fajardo.incomeandexpensetracker.main.addincome.AddIncomeActivity
+import com.lixan.fajardo.incomeandexpensetracker.main.login.LoginActivity
+import io.reactivex.rxkotlin.addTo
+import io.reactivex.rxkotlin.subscribeBy
+import timber.log.Timber
 
 class HomeActivity : BaseViewModelActivity<ActivityHomeBinding, HomeViewModel>() {
 
@@ -28,6 +33,42 @@ class HomeActivity : BaseViewModelActivity<ActivityHomeBinding, HomeViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        setupViewModel()
+        setupViews()
+    }
+
+    private fun setupViewModel() {
+        viewModel.state
+            .observeOn(schedulers.ui())
+            .subscribeBy(
+                onNext = {
+                    handleState(it)
+                },
+                onError = {
+                    Timber.e(it)
+                }
+            ).addTo(disposables)
+    }
+
+    private fun handleState(state: HomeState) {
+        when(state) {
+            is HomeState.GetUserDetailsSuccess -> {
+                binding.userDetails = state.userDetails
+            }
+            is HomeState.LogoutUser -> {
+                LoginActivity.openActivity(this)
+                finishAffinity()
+            }
+            is HomeState.Error -> {
+                Toast.makeText(this, state.errorMessage, Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    private fun setupViews() {
+        binding.tvWelcome.ninjaTap {
+            viewModel.logoutUser()
+        }
         setupBottomNavigation()
         setupFAB()
     }
