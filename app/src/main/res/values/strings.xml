@@ -14,6 +14,8 @@
 
     <string name="error_invalid_credentials">Invalid credentials</string>
     <string name="error_email_password_incorrect">Email or password is incorrect</string>
+    <string name="error_amount_invalid">*Amount Invalid</string>
+
     <string name="home">Home</string>
     <string name="sync">Sync</string>
     <string name="history">History</string>
@@ -28,4 +30,5 @@
     <string name="_0">$0</string>
     <string name="notes">Notes</string>
     <string name="add_notes">Add Notes</string>
+    <string name="expense_added_successfully">Expense added successfully</string>
 </resources>

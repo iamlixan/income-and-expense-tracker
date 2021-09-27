@@ -7,3 +7,15 @@ const val KEY_GIT_USER_DATA = "KEY_GIT_USER_DATA"
 const val NINJA_TAP_THROTTLE_TIME = 500L
 
 const val DATE_FORMAT = "MM/dd/yyyy"
+
+const val DATE_FORMAT_FOR_API = "yyyy-MM-dd"
+
+const val TRANSACTION_TYPE_EXPENSE = "expense"
+
+const val TRANSACTION_TYPE_INCOME = "income"
+
+const val TRANSACTION_SUB_TYPE_FOOD = "Food"
+
+const val TRANSACTION_SUB_TYPE_TRANSPORTATION = "Transportation"
+
+const val TRANSACTION_SUB_TYPE_OTHERS = "Others"
