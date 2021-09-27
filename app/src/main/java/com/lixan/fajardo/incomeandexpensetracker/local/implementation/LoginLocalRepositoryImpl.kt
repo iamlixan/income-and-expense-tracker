@@ -42,6 +42,13 @@ class LoginLocalRepositoryImpl @Inject constructor(
             }
     }
 
+    override fun getBearerToken(): Single<String> {
+        return getUserDetails()
+            .flatMap {
+                Single.just("Bearer ${it.token}")
+            }
+    }
+
     @Transaction
     override fun logoutUser(): Completable {
         return Completable.create{
