@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="userDetails"
+            type="com.lixan.fajardo.incomeandexpensetracker.data.models.UserDataToken" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -44,6 +50,20 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.963" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/leftVerticalGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".04" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/rightVerticalGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".96" />
+
         <ImageView
             android:id="@+id/headerBackground"
             android:layout_width="match_parent"
@@ -53,6 +73,66 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civAvatar"
+            android:layout_width="@dimen/_50dp"
+            android:layout_height="@dimen/_50dp"
+            android:src="@mipmap/img_user"
+            android:layout_marginTop="@dimen/_17dp"
+            app:civ_border_width="@dimen/_1dp"
+            app:layout_constraintStart_toEndOf="@id/leftVerticalGuideline"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_regular"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_11sp"
+            android:lineSpacingExtra="@dimen/_13dp"
+            android:text="@string/welcome"
+            android:layout_marginTop="@dimen/_24dp"
+            android:layout_marginStart="@dimen/_10dp"
+            app:layout_constraintStart_toEndOf="@id/civAvatar"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_bold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_17sp"
+            android:lineSpacingExtra="@dimen/_20dp"
+            android:text="@{userDetails.user.firstName}"
+            android:layout_marginTop="@dimen/_3dp"
+            app:layout_constraintStart_toStartOf="@id/tvWelcome"
+            app:layout_constraintTop_toBottomOf="@id/tvWelcome"
+            tools:text="Joshua"/>
+
+        <ImageButton
+            android:id="@+id/btnArrowDown"
+            android:layout_width="@dimen/_10dp"
+            android:layout_height="@dimen/_5dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_baseline_keyboard_arrow_up_24"
+            android:layout_marginStart="@dimen/_8dp"
+            android:rotation="180"
+            app:layout_constraintStart_toEndOf="@id/tvUserName"
+            app:layout_constraintTop_toTopOf="@id/tvUserName"
+            app:layout_constraintBottom_toBottomOf="@id/tvUserName" />
+
+        <ImageButton
+            android:id="@+id/btnNotifications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            android:src="@drawable/ic_icn_notif"
+            app:layout_constraintTop_toTopOf="@id/civAvatar"
+            app:layout_constraintEnd_toStartOf="@id/rightVerticalGuideline"
+            app:layout_constraintBottom_toBottomOf="@id/civAvatar" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNav"
