@@ -69,8 +69,10 @@ class AddExpenseActivity : BaseViewModelActivity<ActivityAddExpenseBinding, AddE
                 binding.progressView.visibility = View.GONE
             }
             is AddExpenseState.InvalidAmount -> {
-                binding.etAmountContainer.isErrorEnabled = true
-                binding.etAmountContainer.error = getString(R.string.error_amount_invalid)
+                binding.tvAmountError.visibility = View.VISIBLE
+            }
+            is AddExpenseState.SubtypeIsEmpty -> {
+                binding.tvExpenseTypeError.visibility = View.VISIBLE
             }
             is AddExpenseState.Error -> {
                 Toast.makeText(this, state.errorMessage, Toast.LENGTH_LONG).show()
@@ -86,6 +88,7 @@ class AddExpenseActivity : BaseViewModelActivity<ActivityAddExpenseBinding, AddE
         binding.cvParent.setBackgroundResource(R.drawable.cv_top_rounded_corners_white)
 
         binding.btnAddExpense.ninjaTap {
+            clearErrors()
             viewModel.addExpense(
                 subType,
                 binding.etAmount.text?.toString().orEmpty().convertAmountToDouble(),
@@ -163,7 +166,6 @@ class AddExpenseActivity : BaseViewModelActivity<ActivityAddExpenseBinding, AddE
             .subscribeBy(
                 onNext = {
 //                  TODO: Move Logic to ViewModel
-
                     binding.etAmount.setSelection(it.length)
                     if (it.isNullOrEmpty()) return@subscribeBy
                     if (it.toString() == "$") {
@@ -173,6 +175,7 @@ class AddExpenseActivity : BaseViewModelActivity<ActivityAddExpenseBinding, AddE
                     if (it.startsWith("$", false)) return@subscribeBy
                     val amountText = "$$it"
                     binding.etAmount.setText(amountText)
+                    binding.etAmount.setSelection(it.length)
                 }
             ).addTo(disposables)
     }
@@ -183,6 +186,12 @@ class AddExpenseActivity : BaseViewModelActivity<ActivityAddExpenseBinding, AddE
         binding.etAmount.text?.clear()
         binding.etNotes.text?.clear()
         subType = ""
+        binding.root.hideKeyboardClearFocus()
+    }
+
+    private fun clearErrors() {
+        binding.tvExpenseTypeError.visibility = View.GONE
+        binding.tvAmountError.visibility = View.GONE
     }
 
     companion object {

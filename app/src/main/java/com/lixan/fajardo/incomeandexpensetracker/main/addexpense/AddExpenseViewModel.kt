@@ -80,6 +80,7 @@ class AddExpenseViewModel @Inject constructor(
     ): Boolean {
 
         if (subType.isEmpty()) {
+            _state.onNext(AddExpenseState.SubtypeIsEmpty)
             return false
         }
 

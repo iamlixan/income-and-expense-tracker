@@ -14,4 +14,6 @@ sealed class AddExpenseState {
 
     object InvalidAmount : AddExpenseState()
 
+    object SubtypeIsEmpty : AddExpenseState()
+
 }
