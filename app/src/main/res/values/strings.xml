@@ -30,7 +30,8 @@
     <string name="_0">$0</string>
     <string name="notes">Notes</string>
     <string name="add_notes">Add Notes</string>
-    <string name="expense_added_successfully">Expense added successfully</string>
+    <string name="expense_added_successfully">Expense record added successfully</string>
+    <string name="income_added_successfully">Income record added successfully</string>
     <string name="please_select_expense_type">* Please select expense type</string>
     <string name="add_income">Add Income</string>
     <string name="work">Work</string>

@@ -181,10 +181,15 @@ class AddExpenseActivity : BaseViewModelActivity<ActivityAddExpenseBinding, AddE
     }
 
     private fun clearFields() {
-        binding.rgExpenseType.clearCheck()
+        binding.rgIncomeType.clearCheck()
         binding.etDate.setText(Calendar.getInstance().time.getDateString())
         binding.etAmount.text?.clear()
         binding.etNotes.text?.clear()
+
+        binding.rbFood.alpha = 1F
+        binding.rbTransportation.alpha = 1F
+        binding.rbOthers.alpha = 1F
+
         subType = ""
         binding.root.hideKeyboardClearFocus()
     }
