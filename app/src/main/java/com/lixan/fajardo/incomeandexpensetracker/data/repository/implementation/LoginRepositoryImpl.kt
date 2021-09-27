@@ -5,6 +5,7 @@ import com.lixan.fajardo.incomeandexpensetracker.data.repository.source.LoginRep
 import com.lixan.fajardo.incomeandexpensetracker.local.source.LoginLocalRepository
 import com.lixan.fajardo.incomeandexpensetracker.network.remoterepository.source.LoginRemoteRepository
 import com.lixan.fajardo.incomeandexpensetracker.network.response.RequestResult
+import io.reactivex.Completable
 import io.reactivex.Single
 import javax.inject.Inject
 
@@ -35,6 +36,10 @@ class LoginRepositoryImpl @Inject constructor(
 
     override fun getUserDetails(): Single<UserDataToken> {
         return local.getUserDetails()
+    }
+
+    override fun logoutUser(): Completable {
+        return local.logoutUser()
     }
 
 }

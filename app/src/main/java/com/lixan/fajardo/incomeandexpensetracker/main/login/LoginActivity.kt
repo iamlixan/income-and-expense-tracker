@@ -1,5 +1,7 @@
 package com.lixan.fajardo.incomeandexpensetracker.main.login
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -122,5 +124,16 @@ class LoginActivity : BaseViewModelActivity<ActivityLoginBinding, LoginViewModel
     private fun setPasswordError(message: String) {
         binding.etPasswordLayout.isErrorEnabled = true
         binding.etPasswordLayout.error = message
+    }
+
+    companion object {
+        fun openActivity(context: Context) {
+            context.startActivity(
+                Intent(
+                    context,
+                    LoginActivity::class.java
+                )
+            )
+        }
     }
 }
